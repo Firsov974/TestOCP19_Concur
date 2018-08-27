@@ -1,12 +1,14 @@
 package org.ash;
 
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SheepManager {
-    private int sheepCount = 0;
+    private AtomicInteger sheepCount = new AtomicInteger(0);
     private void incrementAndReport() {
-        System.out.print((++sheepCount)+" ");
+        System.out.print(sheepCount.incrementAndGet()+" ");
     }
+
     public static void main(String[] args) {
         ExecutorService service = null;
         try {
