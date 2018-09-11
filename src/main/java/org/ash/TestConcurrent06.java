@@ -1,14 +1,22 @@
 package org.ash;
 
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class TestConcurrent06 {
     public static void main(String[] args) {
+        Map<String, Object> foodData = new ConcurrentHashMap<String, Object>();
+        foodData.put("penguin", 1);
+        foodData.put("flamingo", 2);
+        for(String key: foodData.keySet())
+            foodData.remove(key);
+
         Map<String,Integer> map = new ConcurrentHashMap<>();
         map.put("zebra", 52);
         map.put("elephant", 10);
@@ -24,5 +32,6 @@ public class TestConcurrent06 {
         deque.push(4);
         System.out.println(deque.peek());
         System.out.println(deque.pop());
+
     }
 }
